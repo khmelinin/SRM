@@ -4,17 +4,27 @@
 #include <stdlib.h>
 using namespace std;
 
+void print(int n, int m, float**matrix)
+{
+    cout << "matrix: " << endl;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+            cout << matrix[i][j] << " ";
+        cout << endl;
+    }
+    cout << endl;
+}
+
 int main()
 {
     int i, j, n, m;
-    //создаем массив
+
     n = 4;
     m = 5;
     float** matrix = new float* [n];
     for (i = 0; i < n; i++)
         matrix[i] = new float[m];
-
-    //инициализируем
 
     matrix[0][0] = 3.81;
     matrix[0][1] = 0.25;
@@ -49,18 +59,18 @@ int main()
             cin >> matrix[i][j];
         }*/
 
-    //выводим массив
-    cout << "matrix: " << endl;
+
+    print(n, m, matrix);
+
+   /* cout << "matrix: " << endl;
     for (i = 0; i < n; i++)
     {
         for (j = 0; j < m; j++)
             cout << matrix[i][j] << " ";
         cout << endl;
     }
-    cout << endl;
+    cout << endl;*/
 
-    //Метод Гаусса
-    //Прямой ход, приведение к верхнетреугольному виду
     float  tmp;
     int k;
     float* xx = new float[m];
@@ -76,8 +86,9 @@ int main()
             for (k = n; k >= i; k--)
                 matrix[j][k] -= tmp * matrix[i][k];
         }
+
     }
-    /*обратный ход*/
+
     xx[n - 1] = matrix[n - 1][n];
     for (i = n - 2; i >= 0; i--)
     {
@@ -85,7 +96,6 @@ int main()
         for (j = i + 1; j < n; j++) xx[i] -= matrix[i][j] * xx[j];
     }
 
-    //Выводим решения
     for (i = 0; i < n; i++)
         cout << xx[i] << " ";
     cout << endl;
