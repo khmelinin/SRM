@@ -8,25 +8,46 @@ int main()
 {
     int i, j, n, m;
     //создаем массив
-    cout << "Number of equations: ";
-    cin >> n;
-    cout << "Number of variables: ";
-    cin >> m;
-    m += 1;
+    n = 4;
+    m = 5;
     float** matrix = new float* [n];
     for (i = 0; i < n; i++)
         matrix[i] = new float[m];
 
     //инициализируем
 
-    for (i = 0; i < n; i++)
+    matrix[0][0] = 3.81;
+    matrix[0][1] = 0.25;
+    matrix[0][2] = 1.28;
+    matrix[0][3] = 1.25;
+    matrix[0][4] = 4.21;
+
+    matrix[1][0] = 2.25;
+    matrix[1][1] = 1.32;
+    matrix[1][2] = 5.08;
+    matrix[1][3] = 0.49;
+    matrix[1][4] = 6.97;
+
+    matrix[2][0] = 5.31;
+    matrix[2][1] = 6.78;
+    matrix[2][2] = 1.48;
+    matrix[2][3] = 1.04;
+    matrix[2][4] = 2.38;
+
+    matrix[3][0] = 9.89;
+    matrix[3][1] = 2.45;
+    matrix[3][2] = 3.35;
+    matrix[3][3] = 2.28;
+    matrix[3][4] = 10.98;
+
+    /*for (i = 0; i < n; i++)
 
         for (j = 0; j < m; j++)
         {
             cout << " Element " << "[" << i + 1 << " , " << j + 1 << "]: ";
 
             cin >> matrix[i][j];
-        }
+        }*/
 
     //выводим массив
     cout << "matrix: " << endl;
