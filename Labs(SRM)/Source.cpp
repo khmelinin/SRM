@@ -50,6 +50,15 @@ int main()
     matrix[3][3] = 2.28;
     matrix[3][4] = 10.98;
 
+    float** copy = new float* [n];
+    for (i = 0; i < n; i++)
+        copy[i] = new float[m];
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < m; j++) {
+            copy[i][j] = matrix[i][j];
+        }
+    }
+
     /*for (i = 0; i < n; i++)
 
         for (j = 0; j < m; j++)
@@ -98,6 +107,16 @@ int main()
 
     for (i = 0; i < n; i++)
         cout << xx[i] << " ";
+    cout << endl;
+
+    float* r = new float[n];
+    for (i = 0; i < n; i++) {
+        r[i] = copy[i][4] - (copy[i][0] * xx[0] + copy[i][1] * xx[1] + copy[i][2] * xx[2] + copy[i][3] * xx[3]);
+    }
+
+    cout << "Error:" << endl;
+    for (i = 0; i < n; i++)
+        cout << r[i] << " ";
     cout << endl;
 
     delete[] matrix;
