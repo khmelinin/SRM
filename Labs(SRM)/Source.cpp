@@ -86,7 +86,7 @@ int main()
             for (k = n; k >= i; k--)
                 matrix[j][k] -= tmp * matrix[i][k];
         }
-
+        print(n, m, matrix);
     }
 
     xx[n - 1] = matrix[n - 1][n];
