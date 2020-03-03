@@ -25,6 +25,7 @@ bool ok(int n, int m, float** matrix)
         matrix[4][4] > matrix[4][1] + matrix[4][2] + matrix[4][3] + matrix[4][0])
         return 1;
     return 0;
+
 }
 
 
