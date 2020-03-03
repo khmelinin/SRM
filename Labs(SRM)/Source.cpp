@@ -5,7 +5,52 @@
 
 using namespace std;
 
-void print(int n, int m, float** matrix)
+void print_res(double *x)
+{
+    cout << "result: " << endl;
+
+    for (int i = 0; i < 5; i++)
+    {
+        cout << x[i] << endl;
+    }
+}
+
+double** multipleMatrixes(double** A, double* X)
+{
+
+    double** res = new double*[5];
+    for(int i = 0; i < 5;i++)
+    {
+        res[i] = new double[1];
+    }
+    int n = 4;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 1; j++)
+        {
+            res[i][j] = 0;
+            for (int k = 0; k < 4; k++)
+            {
+                res[i][j] += A[i][k] * X[k];
+            }
+        }
+    }
+
+    return res;
+}
+
+void PrintRVector(double* X, double**A) {
+    double**matrix = multipleMatrixes(A, X);
+    double* r = new double[5];
+    for (int i = 0; i < 5; i++) {
+        r[i] = matrix[i][5] - matrix[i][0];
+    }
+    for (int i = 0; i < 5;i++) {
+        cout << "r = " << r[i] << endl;
+    }
+}
+
+void print(int n, int m, double** matrix)
 {
     cout << "matrix: " << endl;
     for (int i = 0; i < n; i++)
@@ -51,9 +96,9 @@ int main()
 
     n = 5;
     m = 6;
-    float** matrix = new float* [n];
+    double** matrix = new double* [n];
     for (i = 0; i < n; i++)
-        matrix[i] = new float[m];
+        matrix[i] = new double[m];
 
     matrix[0][0] = 5.18 + 0.25;
     matrix[0][1] = 1.12;
@@ -113,17 +158,14 @@ int main()
                 var += (matrix[i][j] * p[j]);
             x[i] = (matrix[i][5] - var) / matrix[i][i];
         }
+        /*PrintRVector(x, matrix);*/
+        cout << endl;
     } while (!converge(x, p));
 
-
-    cout << "result: " << endl;
-
-    for (int i = 0; i < n; i++)
-    {
-        cout << x[i] << endl;
-    }
+    print_res(x);
 
 
+    cout << endl << "";
     delete[] matrix;
     return 0;
 }
