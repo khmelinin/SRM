@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+
 using namespace std;
 
 void print(int n, int m, float** matrix)
@@ -10,12 +11,25 @@ void print(int n, int m, float** matrix)
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
+        {
+            if(j==4)
+            cout << matrix[i][j] << "  | ";
+            else
             cout << matrix[i][j] << " ";
+        }
         cout << endl;
     }
     cout << endl;
 }
 
+bool converge(double* xk, double* xkp)
+{
+    double norm = 0;
+    for (int i = 0; i < 5; i++)
+        norm += (xk[i] - xkp[i]) * (xk[i] - xkp[i]);
+    return (sqrt(norm) < pow(10,-6));
+}
+//
 //bool ok(int n, int m, float** matrix)
 //{
 //    if (matrix[0][0] > matrix[0][1] + matrix[0][2] + matrix[0][3] + matrix[0][4] &&
@@ -77,65 +91,29 @@ int main()
     matrix[4][4] = 5.21 + 0.25;
     matrix[4][5] = 4.95 + 0.25;
 
-    float** copy = new float* [n];
-    for (i = 0; i < n; i++)
-        copy[i] = new float[m];
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < m; j++) {
-            copy[i][j] = matrix[i][j];
-        }
-    }
-
     print(n, m, matrix);
 
-    int* x = new int[n];
-    for (int i = 0; i < n; i++)
+    double x[5], p[5];
+    for (int i = 0; i < 5; i++)
     {
         x[i] = 0;
+        p[i] = 0;
     }
-    x[0] = (matrix[0][5] - matrix[0][1] * x[1] - matrix[0][2] * x[2] - matrix[0][3] * x[3] - matrix[0][4] * x[4]) / matrix[0][0];
-    x[1] = (matrix[1][5] - matrix[1][0] * x[0] - matrix[1][2] * x[2] - matrix[1][3] * x[3] - matrix[1][4] * x[4]) / matrix[1][1];
-    x[2] = (matrix[2][5] - matrix[2][0] * x[0] - matrix[2][1] * x[1] - matrix[2][3] * x[3] - matrix[2][4] * x[4]) / matrix[2][1];
-    x[3] = (matrix[3][5] - matrix[3][0] * x[0] - matrix[3][2] * x[2] - matrix[3][1] * x[1] - matrix[3][4] * x[4]) / matrix[3][1];
-    x[4] = (matrix[4][5] - matrix[4][0] * x[0] - matrix[4][2] * x[2] - matrix[4][3] * x[3] - matrix[4][1] * x[1]) / matrix[4][1];
 
-
-     //float  tmp;
-     //int k;
-     //float* xx = new float[m];
-     //for (i = 0; i < n; i++)
-     //{
-     //    tmp = matrix[i][i];
-     //    for (j = n; j >= i; j--)
-     //        matrix[i][j] /= tmp;
-     //    for (j = i + 1; j < n; j++)
-     //    {
-     //        tmp = matrix[j][i];
-     //        for (k = n; k >= i; k--)
-     //            matrix[j][k] -= tmp * matrix[i][k];
-     //    }
-     //    print(n, m, matrix);
-     //}
-     //xx[n - 1] = matrix[n - 1][n];
-     //for (i = n - 2; i >= 0; i--)
-     //{
-     //    xx[i] = matrix[i][n];
-     //    for (j = i + 1; j < n; j++) xx[i] -= matrix[i][j] * xx[j];
-     //}
-     //for (i = 0; i < n; i++)
-     //    cout << xx[i] << " ";
-     //cout << endl;
-
-     /*float* r = new float[n];
-     for (i = 0; i < n; i++) {
-         r[i] = copy[i][4] - (copy[i][0] * xx[0] + copy[i][1] * xx[1] + copy[i][2] * xx[2] + copy[i][3] * xx[3]);
-     }
-
-     cout << "Error:" << endl;
-      for (i = 0; i < n; i++)
-          cout << r[i] << " ";
-      cout << endl;*/
-
+    do
+    {
+        for (int i = 0; i < n; i++)
+            p[i] = x[i];
+        for (int i = 0; i < n; i++)
+        {
+            double var = 0;
+            for (int j = 0; j < i; j++)
+                var += (matrix[i][j] * x[j]);
+            for (int j = i + 1; j < n; j++)
+                var += (matrix[i][j] * p[j]);
+            x[i] = (matrix[i][5] - var) / matrix[i][i];
+        }
+    } while (!converge(x, p));
 
 
     cout << "result: " << endl;
