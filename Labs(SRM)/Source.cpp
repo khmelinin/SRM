@@ -5,6 +5,23 @@
 
 using namespace std;
 
+void print(int n, int m, double** matrix)
+{
+    cout << "matrix: " << endl;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (j == 4)
+                cout << matrix[i][j] << "  | ";
+            else
+                cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
 void print_res(double *x)
 {
     cout << "result: " << endl;
@@ -34,37 +51,25 @@ double** multipleMatrixes(double** A, double* X)
                 res[i][j] += A[i][k] * X[k];
             }
         }
-    }
+        
+    }print(5, 6, res);
 
     return res;
 }
+
+int iterations = 0;
 
 void PrintRVector(double* X, double**A) {
     double**matrix = multipleMatrixes(A, X);
     double* r = new double[5];
     for (int i = 0; i < 5; i++) {
         r[i] = matrix[i][5] - matrix[i][0];
+        
     }
+   
     for (int i = 0; i < 5;i++) {
         cout << "r = " << r[i] << endl;
     }
-}
-
-void print(int n, int m, double** matrix)
-{
-    cout << "matrix: " << endl;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            if(j==4)
-            cout << matrix[i][j] << "  | ";
-            else
-            cout << matrix[i][j] << " ";
-        }
-        cout << endl;
-    }
-    cout << endl;
 }
 
 bool converge(double* xk, double* xkp)
@@ -74,20 +79,6 @@ bool converge(double* xk, double* xkp)
         norm += (xk[i] - xkp[i]) * (xk[i] - xkp[i]);
     return (sqrt(norm) < pow(10,-6));
 }
-//
-//bool ok(int n, int m, float** matrix)
-//{
-//    if (matrix[0][0] > matrix[0][1] + matrix[0][2] + matrix[0][3] + matrix[0][4] &&
-//        matrix[1][1] > matrix[1][0] + matrix[1][2] + matrix[1][3] + matrix[1][4] &&
-//        matrix[2][2] > matrix[2][1] + matrix[2][0] + matrix[2][3] + matrix[2][4] &&
-//        matrix[3][3] > matrix[3][1] + matrix[3][2] + matrix[3][0] + matrix[3][4] &&
-//        matrix[4][4] > matrix[4][1] + matrix[4][2] + matrix[4][3] + matrix[4][0])
-//        return 1;
-//    return 0;
-//
-//}
-
-
 
 //----------------------- main -----------------------------------------
 int main()
@@ -147,6 +138,7 @@ int main()
 
     do
     {
+        iterations++;
         for (int i = 0; i < n; i++)
             p[i] = x[i];
         for (int i = 0; i < n; i++)
@@ -158,12 +150,14 @@ int main()
                 var += (matrix[i][j] * p[j]);
             x[i] = (matrix[i][5] - var) / matrix[i][i];
         }
-        /*PrintRVector(x, matrix);*/
+        PrintRVector(x, matrix);
         cout << endl;
     } while (!converge(x, p));
 
     print_res(x);
 
+
+    cout << endl << "iterations = " << iterations << endl;
 
     cout << endl << "";
     delete[] matrix;
