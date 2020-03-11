@@ -4,11 +4,64 @@
 #include "iterat.h"
 using namespace std;
 
+double** multipleMatrixes(double** A, double* X)
+{
+
+    double** res = new double* [5];
+    for (int i = 0; i < 5; i++)
+    {
+        res[i] = new double[1];
+    }
+    int n = 4;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 1; j++)
+        {
+            res[i][j] = 0;
+            for (int k = 0; k < 4; k++)
+            {
+                res[i][j] += A[i][k] * X[k];
+            }
+        }
+
+    }
+    //
+    //print(5, 6, res);
+    return res;
+}
+
+    void PrintRVector(double* X, double** A) {
+        double** matrix = multipleMatrixes(A, X);
+        //
+        //print(5, 6, matrix);
+        double* r = new double[5];
+        for (int i = 0; i < 5; i++) {
+            r[i] = matrix[i][5] - matrix[i][0];
+
+        }
+
+        for (int i = 0; i < 5; i++) {
+            cout << "r = " << r[i] << endl;
+        }
+    }
+
+    void print(double A[5][5])
+    {
+        int N = 5;
+        cout << "\nВаша матрица А:" << endl;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                cout << A[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+
 int main()
 {
     setlocale(LC_ALL, "");
-    double eps=pow(10,-6), A[10][10], B[10];
-    int N=5, i, j;
+    double eps=pow(10,-6), A[5][5], B[5];
+    int N=5;
     int method;
   
     A[0][0] = 5.18 + 0.25;
@@ -47,6 +100,8 @@ int main()
     B[3] = 6.25;
     B[4] = 4.95 + 0.25;
 
+    print(A);
+    ///////////////////////////////////////
     int n = 5;
     double tmp, t;
     for (int i = 0; i < 1; i++)
@@ -57,24 +112,58 @@ int main()
         B[i] /= tmp;
         for (int j = i + 1; j < n; j++)
         {
+            print(A);
             tmp = A[j][i];
             for (int k = n - 1; k >= i; k--)
                 A[j][k] -= tmp * A[i][k];
             B[j] -= tmp * B[i];
         }
+        
     }
 
-    cout << "\nВаша матрица А:" << endl;
-    for (i = 0; i < N; i++) {
-        for (j = 0; j < N; j++) {
-            cout << A[i][j] << " ";
+    //int n = 5;
+    //double tmp, t;
+    for (int i = 0; i < 1; i++)
+    {
+        tmp = A[i][i];
+        for (int j = n - 1; j >= i; j--)
+            A[i][j] /= tmp;
+        B[i] /= tmp;
+        for (int j = i + 1; j < n; j++)
+        {
+            print(A);
+            tmp = A[j][i];
+            for (int k = n - 1; k >= i; k--)
+                A[j][k] -= tmp * A[i][k];
+            B[j] -= tmp * B[i];
         }
-        cout << endl;
+
     }
+
+    //int n = 5;
+   //double tmp, t;
+    for (int i = 0; i < 1; i++)
+    {
+        tmp = A[i][i];
+        for (int j = n - 1; j >= i; j--)
+            A[i][j] /= tmp;
+        B[i] /= tmp;
+        for (int j = i + 1; j < n; j++)
+        {
+            print(A);
+            tmp = A[j][i];
+            for (int k = n - 1; k >= i; k--)
+                A[j][k] -= tmp * A[i][k];
+            B[j] -= tmp * B[i];
+        }
+
+    }
+    //////////////////////////////////////
+    print(A);
    
-    cout << "\nВыберите метод решения системы (1 - Гаусс / 2 - Зейдель): ";
-    cin >> method;
+    /*cout << "\n(1 - Гаусс / 2 - Зейдель): ";
+    cin >> method;*/
     cout << endl;
-    iterat(A, B, N, eps, method);
+    iterat(A, B, N, eps, 2);
     return 0;
 }

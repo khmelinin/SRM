@@ -35,6 +35,61 @@ void print_res(double *x)
 double** multipleMatrixes(double** A, double* X)
 {
 
+   // double B[5] = { A[0][5],A[1][5],A[2][5],A[3][5],A[4][5] };
+   // int n = 5;
+   // double tmp, t;
+   // for (int i = 0; i < 1; i++)
+   // {
+   //     tmp = A[i][i];
+   //     for (int j = n - 1; j >= i; j--)
+   //         A[i][j] /= tmp;
+   //     A[i][5] /= tmp;
+   //     for (int j = i + 1; j < n; j++)
+   //     {
+   //         //print(A);
+   //         tmp = A[j][i];
+   //         for (int k = n - 1; k >= i; k--)
+   //             A[j][k] -= tmp * A[i][k];
+   //         A[j][5] -= tmp * A[i][5];
+   //     }
+   // }
+   // //int n = 5;
+   // //double tmp, t;
+   // for (int i = 0; i < 1; i++)
+   // {
+   //     tmp = A[i][i];
+   //     for (int j = n - 1; j >= i; j--)
+   //         A[i][j] /= tmp;
+   //     A[i][5] /= tmp;
+   //     for (int j = i + 1; j < n; j++)
+   //     {
+   //         //print(A);
+   //         tmp = A[j][i];
+   //         for (int k = n - 1; k >= i; k--)
+   //             A[j][k] -= tmp * A[i][k];
+   //         A[j][5] -= tmp * A[i][5];
+   //     }
+   // }
+   // //int n = 5;
+   ////double tmp, t;
+   // for (int i = 0; i < 1; i++)
+   // {
+   //     tmp = A[i][i];
+   //     for (int j = n - 1; j >= i; j--)
+   //         A[i][j] /= tmp;
+   //     A[i][5] /= tmp;
+   //     for (int j = i + 1; j < n; j++)
+   //     {
+   //         //print(A);
+   //         tmp = A[j][i];
+   //         for (int k = n - 1; k >= i; k--)
+   //             A[j][k] -= tmp * A[i][k];
+   //         A[j][5] -= tmp * A[i][5];
+   //     }
+   // }
+   // //
+   // //
+   // //
     double** res = new double*[5];
     for(int i = 0; i < 5;i++)
     {
@@ -52,8 +107,9 @@ double** multipleMatrixes(double** A, double* X)
             }
         }
         
-    }print(5, 6, res);
-
+    }
+    //
+    //print(5, 6, res);
     return res;
 }
 
@@ -61,6 +117,8 @@ int iterations = 0;
 
 void PrintRVector(double* X, double**A) {
     double**matrix = multipleMatrixes(A, X);
+    //
+    //print(5, 6, matrix);
     double* r = new double[5];
     for (int i = 0; i < 5; i++) {
         r[i] = matrix[i][5] - matrix[i][0];
@@ -129,6 +187,56 @@ int main()
 
     print(n, m, matrix);
 
+    int nn = 5;
+    double tmp, t;
+    for (int i = 0; i < 1; i++)
+    {
+        tmp = matrix[i][i];
+        for (int j = nn - 1; j >= i; j--)
+            matrix[i][j] /= tmp;
+        matrix[i][5] /= tmp;
+        for (int j = i + 1; j < nn; j++)
+        {
+            print(n, m, matrix);
+            tmp = matrix[j][i];
+            for (int k = nn - 1; k >= i; k--)
+                matrix[j][k] -= tmp * matrix[i][k];
+            matrix[j][5] -= tmp * matrix[i][5];
+        }
+
+    } for (int i = 0; i < 1; i++)
+    {
+        tmp = matrix[i][i];
+        for (int j = nn - 1; j >= i; j--)
+            matrix[i][j] /= tmp;
+        matrix[i][5] /= tmp;
+        for (int j = i + 1; j < nn; j++)
+        {
+            print(n, m, matrix);
+            tmp = matrix[j][i];
+            for (int k = nn - 1; k >= i; k--)
+                matrix[j][k] -= tmp * matrix[i][k];
+            matrix[j][5] -= tmp * matrix[i][5];
+        }
+
+    } 
+    for (int i = 0; i < 1; i++)
+    {
+        tmp = matrix[i][i];
+        for (int j = nn - 1; j >= i; j--)
+            matrix[i][j] /= tmp;
+        matrix[i][5] /= tmp;
+        for (int j = i + 1; j < nn; j++)
+        {
+            print(n, m, matrix);
+            tmp = matrix[j][i];
+            for (int k = nn - 1; k >= i; k--)
+                matrix[j][k] -= tmp * matrix[i][k];
+            matrix[j][5] -= tmp * matrix[i][5];
+        }
+
+    }
+
     double x[5], p[5];
     for (int i = 0; i < 5; i++)
     {
@@ -146,10 +254,13 @@ int main()
             double var = 0;
             for (int j = 0; j < i; j++)
                 var += (matrix[i][j] * x[j]);
-            for (int j = i + 1; j < n; j++)
+            for (int j = i + 1; j < n; j++) 
                 var += (matrix[i][j] * p[j]);
             x[i] = (matrix[i][5] - var) / matrix[i][i];
+
+            cout << "x"<<i<<" = " << x[i] << endl;
         }
+        
         PrintRVector(x, matrix);
         cout << endl;
     } while (!converge(x, p));

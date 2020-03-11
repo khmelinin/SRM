@@ -1,7 +1,7 @@
 #include "norm.h"
 #include <cmath>
 
-double firstNorm(double  A[10][10], int n, int m)
+double firstNorm(double  A[5][5], int n, int m)
 {
     int i, j;
     double sum = 0, subSum;
@@ -17,7 +17,7 @@ double firstNorm(double  A[10][10], int n, int m)
     return sum;
 }
 
-double secondNorm(double  A[10][10], int n, int m)
+double secondNorm(double  A[5][5], int n, int m)
 {
     int i, j;
     double sum = 0, subSum;
@@ -33,7 +33,7 @@ double secondNorm(double  A[10][10], int n, int m)
     return sum;
 }
 
-double thirdNorm(double A[10][10], int n, int m)
+double thirdNorm(double A[5][5], int n, int m)
 {
     int i, j;
     double sum = 0;
