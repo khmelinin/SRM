@@ -26,5 +26,8 @@
     <None Include="4lab.xmcd">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="4захист.doc">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

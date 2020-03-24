@@ -143,6 +143,7 @@
   <ItemGroup>
     <None Include="4.doc" />
     <None Include="4lab.xmcd" />
+    <None Include="4захист.doc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
