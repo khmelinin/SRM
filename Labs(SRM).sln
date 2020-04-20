@@ -15,9 +15,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3.1", "3.1\3.1.vcxproj", "{
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "4(python)", "4\4(python).pyproj", "{02A759E2-B07D-484C-BCAD-6948FEF8EECB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4(sharp)", "4(sharp)\4(sharp).csproj", "{F4768E25-8698-41EF-A8C9-FF868758DE88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4(sharp)", "4(sharp)\4(sharp).csproj", "{F4768E25-8698-41EF-A8C9-FF868758DE88}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4(++)", "4(++)\4(++).vcxproj", "{0F60B28F-07BE-4243-89C2-0359C3A8CD64}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "7(python)", "7(python)\7(python).pyproj", "{D4A0ECEB-0458-48AD-9A20-8CA3E4B196C5}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "6", "6\6.pyproj", "{63BB7999-5FE7-4637-9EFC-DBB45D6C0315}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +107,18 @@ Global
 		{0F60B28F-07BE-4243-89C2-0359C3A8CD64}.Release|x64.Build.0 = Release|x64
 		{0F60B28F-07BE-4243-89C2-0359C3A8CD64}.Release|x86.ActiveCfg = Release|Win32
 		{0F60B28F-07BE-4243-89C2-0359C3A8CD64}.Release|x86.Build.0 = Release|Win32
+		{D4A0ECEB-0458-48AD-9A20-8CA3E4B196C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A0ECEB-0458-48AD-9A20-8CA3E4B196C5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D4A0ECEB-0458-48AD-9A20-8CA3E4B196C5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D4A0ECEB-0458-48AD-9A20-8CA3E4B196C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4A0ECEB-0458-48AD-9A20-8CA3E4B196C5}.Release|x64.ActiveCfg = Release|Any CPU
+		{D4A0ECEB-0458-48AD-9A20-8CA3E4B196C5}.Release|x86.ActiveCfg = Release|Any CPU
+		{63BB7999-5FE7-4637-9EFC-DBB45D6C0315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63BB7999-5FE7-4637-9EFC-DBB45D6C0315}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{63BB7999-5FE7-4637-9EFC-DBB45D6C0315}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{63BB7999-5FE7-4637-9EFC-DBB45D6C0315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63BB7999-5FE7-4637-9EFC-DBB45D6C0315}.Release|x64.ActiveCfg = Release|Any CPU
+		{63BB7999-5FE7-4637-9EFC-DBB45D6C0315}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
