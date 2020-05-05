@@ -1,63 +1,64 @@
-import math
 import numpy as np
+import matplotlib.pyplot as plt
+import math
 def my_func(x):
     return math.sin((1/2)*x)+math.pow((x*1),1/3)
-
-def u_cal(u, n):
-    temp = u;
-    for i in range(1, n):
-        temp = temp * (u - i);
-    return temp;
 
 def fact(n):
     f = 1;
     for i in range(2, n + 1):
         f *= i;
-    return f;
+    return f
 
-n = 5;
-x = [21, 22, 24, 26, 28];
 
-# y[][] is used for difference table
-# with y[][0] used for input
+def find_q(q, n):
+    temp = q;
+    for i in range(1, n):
+        temp = temp * (q - i);
+    return temp;
+
+n = 5
+x = x = [20, 22, 24, 26, 28];
 y = [[0 for i in range(n)]
-     for j in range(n)];
-y[0][0] = my_func(x[0]);
-y[1][0] =my_func(x[1]);
-y[2][0] = my_func(x[2]);
-y[3][0] = my_func(x[3]);
-y[4][0] = my_func(x[4]);
-
+        for j in range(n)];
+y[0][0] = my_func(x[0])
+y[1][0] = my_func(x[1])
+y[2][0] = my_func(x[2])
+y[3][0] = my_func(x[3])
+y[4][0] = my_func(x[4])
+#ситаем разницу столбцов
 for i in range(1, n):
     for j in range(n - i):
         y[j][i] = y[j + 1][i - 1] - y[j][i - 1];
-
-    # Displaying the forward difference table
-for i in range(n):
-    print(x[i], end="\t")
-    for j in range(n - i):
-        print(y[i][j], end="\t")
-    print("")
-
-# Value to interpolate at
-value = 27;
-
-# initializing u and sum
+#
+value =27
+#
 sum = y[0][0];
-u = (value - x[0]) / (x[1] - x[0])
+q = (value - x[0]) / (x[1] - x[0]);
 for i in range(1, n):
-    sum = sum + (u_cal(u, i) * y[0][i]) / fact(i)
+    sum = sum + (find_q(q, i) * y[0][i]) / fact(i);
+
+print("\nValue at", value,
+      "is", round(sum, 6));
+
+for i in range(n):
+    print(x[i], end = "\t");
+    for j in range(n - i):
+        print(y[i][j], end = "\t");
+    print("");
+
+
+
+ar_x=x = [20, 22, 24, 26, 28];
+ar_y=[0.27015115293, -1.4849887449, 0.70915546365, 2.6386578902, -4.10008617848]
 
 print("\nValue at", value,
       "is", sum)
-print('true value for ',value,my_func(27))
-
-######################################################################################################################################
-import matplotlib.pyplot as plt
-
+print('true value for ',value ,my_func(value))
+############################################################################################################################
 #create sampling points for sin(x)
-xk=np.linspace(21,28,5)
-yk=np.sin(xk/2)+np.cbrt(xk)
+xk=np.linspace(20,28,5)
+yk=np.sin(xk/2)+xk**(1/3)
 n=len(xk)-1
 hk=np.array([xk[i+1]-xk[i] for i in range(n)])
 print(xk,yk,hk)
@@ -98,6 +99,7 @@ ypp=np.append(z,yppn)
 
 print("\nSolution for y'' _0 ... y'' _n:",ypp)
 (a,b,c,d)=abcd(yk,hk,ypp)
+print("asdsadsad",a,b,c,d)
 
 
 xkplot=np.linspace(xk[0],xk[-1],600)
@@ -112,7 +114,7 @@ ax.set_ylabel("y")
 ax.grid(linestyle="dotted")
 
 ax.plot(xkplot,spline,label="spline")
-ax.plot(xkplot,np.sin(xkplot/2)+np.cbrt(xkplot),label="sin(x)")
+ax.plot(xkplot,np.sin(xkplot/2)+xkplot**(1/3),label="np.sin(xk/2)+xk**(1/3)")
 ax.plot(xk,yk,"o",label="knots")
 
 ax.legend(loc="upper right")
