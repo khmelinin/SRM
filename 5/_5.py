@@ -49,14 +49,10 @@ for i in range(n):
 
 
 
-ar_x=x = [20, 22, 24, 26, 28];
-ar_y=[0.27015115293, -1.4849887449, 0.70915546365, 2.6386578902, -4.10008617848]
-
 print("\nValue at", value,
       "is", sum)
 print('true value for ',value ,my_func(value))
 ############################################################################################################################
-#create sampling points for sin(x)
 xk=np.linspace(20,28,5)
 yk=np.sin(xk/2)+xk**(1/3)
 n=len(xk)-1

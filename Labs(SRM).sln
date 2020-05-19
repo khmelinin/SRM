@@ -29,7 +29,11 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "tmp", "tmp\tmp.pyproj", "{7
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5(++)", "5(++)\5(++).vcxproj", "{B46F4DA3-00BE-444C-8414-BBE7B70EFBC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5(sharp)", "5(sharp)\5(sharp).csproj", "{FF513BC4-10CC-4585-9C89-A49753C5CE7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5(sharp)", "5(sharp)\5(sharp).csproj", "{FF513BC4-10CC-4585-9C89-A49753C5CE7B}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "8", "8\8.pyproj", "{579CD50E-4FC4-4C30-8237-6345677CCB39}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "8(++)", "8(++)\8(++).vcxproj", "{2C26B0EB-237C-4E28-B737-865C7A59600C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -161,6 +165,22 @@ Global
 		{FF513BC4-10CC-4585-9C89-A49753C5CE7B}.Release|x64.Build.0 = Release|Any CPU
 		{FF513BC4-10CC-4585-9C89-A49753C5CE7B}.Release|x86.ActiveCfg = Release|Any CPU
 		{FF513BC4-10CC-4585-9C89-A49753C5CE7B}.Release|x86.Build.0 = Release|Any CPU
+		{579CD50E-4FC4-4C30-8237-6345677CCB39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{579CD50E-4FC4-4C30-8237-6345677CCB39}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{579CD50E-4FC4-4C30-8237-6345677CCB39}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{579CD50E-4FC4-4C30-8237-6345677CCB39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{579CD50E-4FC4-4C30-8237-6345677CCB39}.Release|x64.ActiveCfg = Release|Any CPU
+		{579CD50E-4FC4-4C30-8237-6345677CCB39}.Release|x86.ActiveCfg = Release|Any CPU
+		{2C26B0EB-237C-4E28-B737-865C7A59600C}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{2C26B0EB-237C-4E28-B737-865C7A59600C}.Debug|x64.ActiveCfg = Debug|x64
+		{2C26B0EB-237C-4E28-B737-865C7A59600C}.Debug|x64.Build.0 = Debug|x64
+		{2C26B0EB-237C-4E28-B737-865C7A59600C}.Debug|x86.ActiveCfg = Debug|Win32
+		{2C26B0EB-237C-4E28-B737-865C7A59600C}.Debug|x86.Build.0 = Debug|Win32
+		{2C26B0EB-237C-4E28-B737-865C7A59600C}.Release|Any CPU.ActiveCfg = Release|Win32
+		{2C26B0EB-237C-4E28-B737-865C7A59600C}.Release|x64.ActiveCfg = Release|x64
+		{2C26B0EB-237C-4E28-B737-865C7A59600C}.Release|x64.Build.0 = Release|x64
+		{2C26B0EB-237C-4E28-B737-865C7A59600C}.Release|x86.ActiveCfg = Release|Win32
+		{2C26B0EB-237C-4E28-B737-865C7A59600C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
